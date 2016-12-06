@@ -43,21 +43,20 @@ void setup()
   //shapes decleration 
   rectMode(CENTER); 
    ellipseMode(CENTER);
-  m1A = createShape(ELLIPSE,350,200,(255*2)+2,20);
-  m2A = createShape(ELLIPSE,350,250,(255*2)+2,20);
+ // m1A = createShape(RECT,0,0,(255*2)+2,20);
+  /*m2A = createShape(ELLIPSE,350,250,(255*2)+2,20);
   m3A = createShape(ELLIPSE,350,300,(255*2)+2,20);
   m4A = createShape(ELLIPSE,350,350,(255*2)+2,20);
-  udA = createShape(ELLIPSE,350,400,(255*2)+2,20);
+  udA = createShape(ELLIPSE,350,400,(255*2)+2,20);*/
 
 }
-
          /*m1=0;m2=0;
          m3=0;m4=0;
          m1r=0;m2r=0;
          m3r=0;m4r=0;*/
   void draw() 
 {
-  background(51, 102, 153);
+  background(255);
   //image(prop, 0, height/2, prop.width/2, prop.height/2);
   // all these values come between (-127.5_127.5);
    XL =gpad.getSlider("XL").getValue();
@@ -65,9 +64,7 @@ void setup()
    XR =gpad.getSlider("XR").getValue();
    YR =gpad.getSlider("YR").getValue();
    float ROT =gpad.getSlider("LT_RT").getValue();
-     
-   
-   
+
     r = sqrt((XL*XL)+(YL*YL));
    //sometimes the radious is greater than 127
     if(abs(ROT)<5)
@@ -235,24 +232,47 @@ void setup()
     //arduino.analogWrite(9,int(m4));
     //.arduino.analogWrite(8,int(m4r));
 
-     
- /* shape(m1A);
-  shape(m2A);
+  
+  /*shape(m2A);
   shape(m3A);
   shape(m4A);
   shape(udA);*/
+  draw_ROV(up);
+  draw_motors();
   
-  //the ROV's body
+  fill(255,0,0);
+  text(mouseX+"  "+mouseY,mouseX,mouseY);
+}
+
+
+void draw_motors()
+{
+  /*rectMode(CORNERS);
+  pushMatrix();
   stroke(0, 0, 0);
   strokeWeight(3);
-  fill(102, 102, 102);
+  fill(2);
+  rect(300,300,200,200);
+  rotate(PIE/4);
+  popMatrix();
+*/
+}
+
+ void draw_ROV(float up)
+ {
+   //the ROV's body
+   rectMode(CENTER);
+  stroke(0, 0, 0);
+  strokeWeight(3);
+  fill(122,122,122);
   rect(350,350, 400, 500,8);
   //the up and down circles
   //up left motor
   text("up & down "+abs(int(up*100/255))+"%",60, 120);
   pushMatrix();
-  fill(0, 0, 0);
+  fill(105,105,105);
   ellipse(85, 200, 255/2, 255/2);
+  
   Am1A+=up*0.1/100;
   translate(85,200);
   fill(150);
@@ -260,9 +280,12 @@ void setup()
   ellipse(0, 0, 255/2, 20);
   popMatrix();
   
+  fill(0);
+  ellipse(85, 200, 40, 40);
   //down left motor
-  fill(0, 0, 0);
+  fill(105,105,105);
   ellipse(85, 500, 255/2, 255/2);
+  
   Am1A+=up*0.1/100;
   pushMatrix();
   translate(85, 500);
@@ -271,33 +294,34 @@ void setup()
   ellipse(0, 0, 255/2, 20);
   popMatrix();
   
-  //up right motor
-  fill(0, 0, 0);
-  ellipse(620, 500, 255/2, 255/2);
+  fill(0);
+  ellipse(85, 500, 40, 40);
+  //down right motor
+  fill(105,105,105);
+  ellipse(616, 500, 255/2, 255/2);
+  
   Am1A+=up*0.1/100;
   pushMatrix();
-  translate(620, 500);
+  translate(616, 500);
   fill(150);
   rotate(Am1A);
   ellipse(0, 0, 255/2, 20);
   popMatrix();
   
+  fill(0);
+  ellipse(616, 500, 40, 40);
+  //up right motor
+  fill(105,105,105);
+  ellipse(616, 200, 255/2, 255/2);
   
+  Am1A+=up*0.1/100;
+  pushMatrix();
+  translate(616, 200);
+  fill(150);
+  rotate(Am1A);
+  ellipse(0, 0, 255/2, 20);
+  popMatrix();
   
-  text(mouseX+"  "+mouseY,mouseX,mouseY);
- 
-  
-  /*
-   
-   fill(102, 102, 102);
-   
-   fill(255, 0, 0);
-   ellipse(85, 200,(up*1/4)+255/4,(up*1/4)+255/4);*/
-  
-  
-  
-  
-  
-  
-}
- 
+  fill(0);
+  ellipse(616, 200, 40, 40);
+ }
