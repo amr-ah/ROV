@@ -24,11 +24,11 @@ float up;
 // all UI elements start from here
 
 PShape m1A;
+float Am1A=0;
 PShape m2A;
 PShape m3A;
 PShape m4A;
 PShape udA;
-
 
 void setup() 
 {
@@ -42,12 +42,13 @@ void setup()
   }
   //shapes decleration 
   rectMode(CENTER); 
+   ellipseMode(CENTER);
   m1A = createShape(ELLIPSE,350,200,(255*2)+2,20);
   m2A = createShape(ELLIPSE,350,250,(255*2)+2,20);
   m3A = createShape(ELLIPSE,350,300,(255*2)+2,20);
   m4A = createShape(ELLIPSE,350,350,(255*2)+2,20);
   udA = createShape(ELLIPSE,350,400,(255*2)+2,20);
-  
+
 }
 
          /*m1=0;m2=0;
@@ -57,7 +58,7 @@ void setup()
   void draw() 
 {
   background(51, 102, 153);
-  
+  //image(prop, 0, height/2, prop.width/2, prop.height/2);
   // all these values come between (-127.5_127.5);
    XL =gpad.getSlider("XL").getValue();
    YL =gpad.getSlider("YL").getValue();
@@ -247,12 +248,51 @@ void setup()
   fill(102, 102, 102);
   rect(350,350, 400, 500,8);
   //the up and down circles
+  //up left motor
+  text("up & down "+abs(int(up*100/255))+"%",60, 120);
+  pushMatrix();
   fill(0, 0, 0);
-   text("up & down "+abs(int(up*100/255))+"%",60, 120);
+  ellipse(85, 200, 255/2, 255/2);
+  Am1A+=up*0.1/100;
+  translate(85,200);
+  fill(150);
+  rotate(Am1A);
+  ellipse(0, 0, 255/2, 20);
+  popMatrix();
+  
+  //down left motor
+  fill(0, 0, 0);
+  ellipse(85, 500, 255/2, 255/2);
+  Am1A+=up*0.1/100;
+  pushMatrix();
+  translate(85, 500);
+  fill(150);
+  rotate(Am1A);
+  ellipse(0, 0, 255/2, 20);
+  popMatrix();
+  
+  //up right motor
+  fill(0, 0, 0);
+  ellipse(620, 500, 255/2, 255/2);
+  Am1A+=up*0.1/100;
+  pushMatrix();
+  translate(620, 500);
+  fill(150);
+  rotate(Am1A);
+  ellipse(0, 0, 255/2, 20);
+  popMatrix();
+  
+  
+  
+  text(mouseX+"  "+mouseY,mouseX,mouseY);
+ 
+  
+  /*
+   
    fill(102, 102, 102);
-   ellipse(85, 200, 255/2, 255/2);
+   
    fill(255, 0, 0);
-   ellipse(85, 200,(up*1/4)+255/4,(up*1/4)+255/4);
+   ellipse(85, 200,(up*1/4)+255/4,(up*1/4)+255/4);*/
   
   
   
