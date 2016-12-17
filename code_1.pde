@@ -16,8 +16,10 @@ float YR;
 float r;//left analog radious 
 float v=0;// v is the ratio between both x and y in each quarter
 //motors
-float m1;float m2;
-float m3;float m4;
+float m1;
+float m2;
+float m3;
+float m4;
 float m1r;float m2r;
 float m3r;float m4r;
 float up; 
@@ -238,24 +240,77 @@ void setup()
   shape(m4A);
   shape(udA);*/
   draw_ROV(up);
-  draw_motors();
+  draw_motors(m1,m2,m3,m4);
   
   fill(255,0,0);
   text(mouseX+"  "+mouseY,mouseX,mouseY);
 }
 
 
-void draw_motors()
+void draw_motors(float m1,float m2,float m3,float m4)
 {
-  /*rectMode(CORNERS);
+  ellipseMode(CENTER);
+  
   pushMatrix();
   stroke(0, 0, 0);
-  strokeWeight(3);
+  strokeWeight(10);
   fill(2);
-  rect(300,300,200,200);
-  rotate(PIE/4);
+  line(250+(m1/4),200+(m1/4),250,200);
   popMatrix();
-*/
+  
+  pushMatrix();
+  fill(255);
+  strokeWeight(2);
+  translate(250,200);
+  rotate(PIE/2);
+  rect(0,0,10,100);
+  popMatrix();
+  ///////////////////////////////
+  pushMatrix();
+  stroke(0, 0, 0);
+  strokeWeight(10);
+  fill(2);
+  line(450-(m2/4),200+(m2/4),450,200);
+  popMatrix();
+  
+  pushMatrix();
+  fill(255);
+  strokeWeight(2);
+  translate(450,200);
+  rotate(PI*2/3);
+  rect(0,0,10,100);
+  popMatrix();
+  ///////////////////////////
+  pushMatrix();
+  stroke(0, 0, 0);
+  strokeWeight(10);
+  fill(2);
+  line(250+(m3/4),500-(m3/4),250,500);
+  popMatrix();
+  
+  pushMatrix();
+  fill(255);
+  strokeWeight(2);
+  translate(250,500);
+  rotate(PI*2/3);
+  rect(0,0,10,100);
+  popMatrix();
+  ////////////////////////////
+  pushMatrix();
+  stroke(0, 0, 0);
+  strokeWeight(10);
+  fill(2);
+  line(450-(m4/4),500-(m4/4),450,500);
+  popMatrix();
+  
+  pushMatrix();
+  fill(255);
+  strokeWeight(2);
+  translate(450,500);
+  rotate(PIE/2);
+  rect(0,0,10,100);
+  popMatrix();
+
 }
 
  void draw_ROV(float up)
