@@ -240,14 +240,14 @@ void setup()
   shape(m4A);
   shape(udA);*/
   draw_ROV(up);
-  draw_motors(m1,m2,m3,m4);
+  draw_motors(m1,m2,m3,m4,m1r,m2r,m3r,m4r);
   
   fill(255,0,0);
   text(mouseX+"  "+mouseY,mouseX,mouseY);
 }
 
 
-void draw_motors(float m1,float m2,float m3,float m4)
+void draw_motors(float m1,float m2,float m3,float m4,float m1r,float m2r,float m3r,float m4r)
 {
   ellipseMode(CENTER);
   
@@ -255,7 +255,8 @@ void draw_motors(float m1,float m2,float m3,float m4)
   stroke(0, 0, 0);
   strokeWeight(10);
   fill(2);
-  line(250+(m1/4),200+(m1/4),250,200);
+  line(250-(m1/3),200-(m1/3),250,200);
+  line(250+(m1r/3),200+(m1r/3),250,200);
   popMatrix();
   
   pushMatrix();
@@ -270,7 +271,8 @@ void draw_motors(float m1,float m2,float m3,float m4)
   stroke(0, 0, 0);
   strokeWeight(10);
   fill(2);
-  line(450-(m2/4),200+(m2/4),450,200);
+  line(450-(m2/3),200+(m2/3),450,200);
+  line(450+(m2r/3),200-(m2r/3),450,200);
   popMatrix();
   
   pushMatrix();
@@ -285,7 +287,8 @@ void draw_motors(float m1,float m2,float m3,float m4)
   stroke(0, 0, 0);
   strokeWeight(10);
   fill(2);
-  line(250+(m3/4),500-(m3/4),250,500);
+  line(250-(m4/3),500+(m4/3),250,500);
+  line(250+(m4r/3),500-(m4r/3),250,500);
   popMatrix();
   
   pushMatrix();
@@ -300,7 +303,8 @@ void draw_motors(float m1,float m2,float m3,float m4)
   stroke(0, 0, 0);
   strokeWeight(10);
   fill(2);
-  line(450-(m4/4),500-(m4/4),450,500);
+  line(450-(m3/3),500-(m3/3),450,500);
+  line(450+(m3r/3),500+(m3r/3),450,500); 
   popMatrix();
   
   pushMatrix();
