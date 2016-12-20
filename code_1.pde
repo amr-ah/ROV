@@ -222,18 +222,19 @@ void setup()
       ellipse(85, 200, (255/4)+up*1/4, (255/4)+up*1/4);
       */
     }
+/*
     //the arduino code 
-    /*arduino.analogWrite(5,int(m1));
+    arduino.analogWrite(5,int(m1));
     arduino.analogWrite(4,int(m1r));
-    arduino.analogWrite(7,int(m3));
-    arduino.analogWrite(6,int(m3r));
-   */
+    //arduino.analogWrite(7,int(m3));
+    //arduino.analogWrite(6,int(m3r));
+   
    //same H-bridge for m2 and m4
-    //arduino.analogWrite(9,int(m2));
-    //arduino.analogWrite(8,int(m2r));
-    //arduino.analogWrite(9,int(m4));
-    //.arduino.analogWrite(8,int(m4r));
-
+    arduino.analogWrite(9,int(m2));
+    arduino.analogWrite(8,int(m2r));
+    arduino.analogWrite(6,int(m4));
+    arduino.analogWrite(7,int(m4r));
+*/
   
   /*shape(m2A);
   shape(m3A);
